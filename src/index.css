@@ -1,4 +1,20 @@
 body
 {
   background-color: whitesmoke;
+  margin: 20px;
+}
+
+header
+{
+  margin: -20px;
+  margin-bottom: 20px;
+  height: 40px;
+  background-color: grey;
+  color: whitesmoke;
+  text-align: center;
+  font-size: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 }
