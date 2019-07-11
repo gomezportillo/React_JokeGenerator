@@ -1,25 +1,15 @@
 import React from "react"
 
-import Joke from "./Joke"
-import jokesData from "./jokesData.js"
+import JokeComponent from "./JokeComponent.js"
 
-function App()
+class App extends React.Component
 {
-  const jokeComponents = jokesData.map(joke => {
+  render ()
+  {
     return (
-      <Joke
-        key       = {joke.id}
-        question  = {joke.question}
-        punchline = {joke.punchline}
-      />
+      <JokeComponent />
     )
-  })
-
-  return (
-    <div>
-      {jokeComponents}
-    </div>
-  )
+  }
 }
 
 export default App
