@@ -17,4 +17,16 @@ header
   justify-content: center;
   align-items: center;
 }
+
+#button-div
+{
+  text-align: center;
+}
+
+button
+{
+  height: 40px;
+  color: dark-grey;
+  text-align: center;
+  font-size: 15px;
 }

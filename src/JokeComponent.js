@@ -10,7 +10,7 @@ class JokeComponent extends React.Component
     super()
 
     this.state = {
-      jokeComponents: jokesData.map(joke => {
+      allJokes: jokesData.map(joke => {
         return (
           <Joke
             key       = {joke.id}
@@ -20,13 +20,35 @@ class JokeComponent extends React.Component
         )
       })
     }
+    this.handleClick = this.handleClick.bind(this) // to be able to use the state from the function
+  }
+
+  handleClick()
+  {
+    var randomIndex = this.generateRandomNumber()
+    var newJoke = this.state.allJokes[randomIndex]
+    this.setState({ currentJoke: newJoke})
+  }
+
+  generateRandomNumber()
+  {
+    var min = 0;
+    var max = this.state.allJokes.length
+    var rand = min + Math.random() * (max - min);
+    return Math.floor(rand)
   }
 
   render ()
   {
     return (
       <div>
-        {this.state.jokeComponents}
+        <div id="button-div">
+          <button onClick={this.handleClick}>Generate joke!</button>
+        </div>
+        <hr/>
+        <div>
+          {this.state.currentJoke}
+        </div>
       </div>
     )
   }

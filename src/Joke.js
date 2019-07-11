@@ -7,7 +7,7 @@ class Joke extends React.Component
     return (
       <div>
         <h3 style={{display: this.props.question ? "block" : "none"}}>Question: {this.props.question}</h3>
-        <h3 style={{color: !this.props.question && "#999" }}>Answer: {this.props.punchline}</h3>
+        <h3>{this.props.question ? "Answer" : "Punchline"}: {this.props.punchline}</h3>
         <hr/>
       </div>
     )
