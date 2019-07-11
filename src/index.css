@@ -18,6 +18,18 @@ header
   align-items: center;
 }
 
+footer
+{
+  width: 100%;
+  background-color: grey;
+  color: whitesmoke;
+  text-align: center;
+  font-size: 20px;
+  position:absolute;
+  bottom:0;
+  left:0;
+}
+
 #button-div
 {
   text-align: center;

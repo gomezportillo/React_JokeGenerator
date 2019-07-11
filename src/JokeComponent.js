@@ -1,7 +1,6 @@
 import React from "react"
 
 import Joke from "./Joke"
-import jokesData from "./data/jokesData.js"
 
 class JokeComponent extends React.Component
 {
@@ -9,33 +8,33 @@ class JokeComponent extends React.Component
   {
     super()
 
-    this.state = {
-      allJokes: jokesData.map(joke => {
-        return (
-          <Joke
-            key       = {joke.id}
-            question  = {joke.question}
-            punchline = {joke.punchline}
-            />
-        )
-      })
-    }
+    this.state = { currentJoke: null }
     this.handleClick = this.handleClick.bind(this) // to be able to use the state from the function
   }
 
   handleClick()
   {
-    var randomIndex = this.generateRandomNumber()
-    var newJoke = this.state.allJokes[randomIndex]
-    this.setState({ currentJoke: newJoke})
-  }
+    var myURL = "https://sv443.net/jokeapi/category/Programming"
 
-  generateRandomNumber()
-  {
-    var min = 0;
-    var max = this.state.allJokes.length
-    var rand = min + Math.random() * (max - min);
-    return Math.floor(rand)
+    fetch(myURL)
+      .then(response => response.json())
+      .then(data => {
+        console.log(data)
+        if (data.type === "single")
+        {
+          var newJoke = <Joke punchline={data.joke} />
+        }
+        else
+        {
+          var newJoke = <Joke question={data.setup}
+                              punchline={data.delivery}
+                        />
+        }
+        this.setState({ currentJoke: newJoke })
+      })
+      .catch(() => {
+        this.setState({ currentJoke: <h2>ERROR 429: Too many requests</h2> })
+      })
   }
 
   render ()

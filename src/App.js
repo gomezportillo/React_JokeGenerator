@@ -1,6 +1,7 @@
 import React from "react"
 
 import Header from "./Header.js"
+import Footer from "./Footer.js"
 import JokeComponent from "./JokeComponent.js"
 
 class App extends React.Component
@@ -11,6 +12,7 @@ class App extends React.Component
       <div>
         <Header />
         <JokeComponent />
+        <Footer />
       </div>
     )
   }
